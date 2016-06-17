@@ -1,9 +1,16 @@
 <style>
 
-@font-face { font-family: Electrolize; src: url("el.TTF"); }
-input {
+@font-face { font-family: Electrolize; src: url("EL.TTF"); }
+.button {
 	font-family: Electrolize;
 	font-size: 50;
 }
+
+@font-face { font-family: DOWNCOME; src: url("dc.TTF"); }
+.title {
+	font-family: DOWNCOME;
+	font-size: 50;
+}
+
 
 </style>

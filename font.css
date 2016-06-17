@@ -1,0 +1,9 @@
+<style>
+
+@font-face { font-family: Electrolize; src: url("el.TTF"); }
+input {
+	font-family: Electrolize;
+	font-size: 50;
+}
+
+</style>

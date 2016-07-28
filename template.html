@@ -1,44 +1,98 @@
 <!DOCTYPE>
 
 <html style="background-color: #717171">
-	
-<head>
-<link rel="stylesheet" type="index/css" href="index.css" />
-<link rel="stylesheet" type="font/css" href="font.css" />
-</head>
 
-	<title></title>
+	<head>
+		<link rel="stylesheet" type="index/css" href="index.css" />
+		<link rel="stylesheet" type="font/css" href="font.css" />
+
+		<title>EDMG</title>
+	</head>
 
 
-<div id="header">
-	
-	<h1 style="text-align: center ; background-color: linear-gradient(black, blue) ; color: white" class="customfont">Electronic Dance Music Generator</h1>
+	<div id="header">
 
-</div>
+		<h1 style="text-align: center ; background-color: linear-gradient(black, blue) ; color: white" class="customfont">Electronic Dance Music Generator</h1>
 
-<br>
+	</div>
 
-<center>
-<div>
-<div>
-    <input type="button" value="1" class="button" href="" /><input type="button" value="2" class="button" href="" /><input type="button" value="3" class="button" href="" />
-</div>
+	<br>
 
-<div>
-    <input type="button" value="4" class="button" href="" /><input type="button" value="5" class="button" href="" /><input type="button" value="6" class="button" href="" />
-</div>
-
-<div>
-    <input type="button" value="7" class="button" href="" /><input type="button" value="8" class="button" href="" /><input type="button" value="9" class="button" href="" />
-</div>
-
-<div>
 	<center>
-		<input type="button" value="0" class="button" href="" />
-	</center>
-</div>
-</div>
-</center>
+		<div>
+			<div>
+				<input disabled id="numberDisplay" type="number" />
+			</div>
+			<div>
+			    <input onclick="input(this.value)" type="button" value="1" class="button" href="" /><input onclick="input(this.value)" type="button" value="2" class="button" href="" /><input onclick="input(this.value)" type="button" value="3" class="button" href="" />
+			</div>
 
+			<div>
+			    <input onclick="input(this.value)" type="button" value="4" class="button" href="" /><input onclick="input(this.value)" type="button" value="5" class="button" href="" /><input onclick="input(this.value)" type="button" value="6" class="button" href="" />
+			</div>
+
+			<div>
+			    <input onclick="input(this.value)" type="button" value="7" class="button" href="" /><input onclick="input(this.value)" type="button" value="8" class="button" href="" /><input onclick="input(this.value)" type="button" value="9" class="button" href="" />
+			</div>
+
+			<div>
+				<center>
+					<input type="button" value="0" class="button" href="" /><input class="button" type="button" onclick="clearInput()" value="Clear"/>
+				</center>
+			</div>
+		</div>
+	</center>
 
 </html>
+
+<script>
+//this string will hold the current set of number input from the keypad
+var inputString = "";
+//valid keypad combo
+var combo = "294294"
+
+//start a loop to check every 1/2 sec if the inputString matches the combo
+var checkLoop = setInterval(function() {
+	if(inputString === combo) {
+
+		//alert combo matches
+		console.log('keypad combo matches!');
+		alert('MATCH!');
+
+		//stop this loop
+		clearInterval(checkLoop);
+	}
+}, 500);
+
+//add a number to the inputString and update the screen (dom)
+function input(number) {
+	//change the number type from integer to string
+	var data = String(number);
+	//add data to global input string
+	inputString += number;
+
+	console.log('inputed:' + number);
+	console.log('total input:' + inputString);
+
+	//update the input value after every keypress
+	updateInputValue();
+}
+
+//set the inputString to empty and update the dom
+function clearInput() {
+
+	//set string to empty
+	inputString = "";
+	//update dom to empty string
+	updateInputValue();
+
+	//clear the command console
+	console.clear();
+}
+
+//update the input dom to the inputString value
+function updateInputValue() {
+	document.getElementById('numberDisplay').value = inputString;
+}
+
+</script>

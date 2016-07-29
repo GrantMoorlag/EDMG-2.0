@@ -49,18 +49,26 @@
 //this string will hold the current set of number input from the keypad
 var inputString = "";
 //valid keypad combo
-var combo = "294294"
+var setIndex = 0;
+var comboSet = [
+	"294",
+	"232",
+	"153"
+];
 
 //start a loop to check every 1/2 sec if the inputString matches the combo
 var checkLoop = setInterval(function() {
-	if(inputString === combo) {
-
-		//alert combo matches
-		console.log('keypad combo matches!');
-		alert('MATCH!');
-
-		//stop this loop
+	//if we have moved through the whole set
+	if(setIndex === comboSet.length) {
+		alert('Welcome to the other side...');
 		clearInterval(checkLoop);
+	}
+
+	if(inputString === comboSet[setIndex]) {
+		//clear the input to let the user know they enter the set correctly
+		clearInput();
+		//move to the next set
+		setIndex += 1;
 	}
 }, 500);
 

@@ -48,8 +48,9 @@
 <script>
 //this string will hold the current set of number input from the keypad
 var inputString = "";
-//valid keypad combo
+//current position in the combo array (remember 0 is the first index of an array)
 var setIndex = 0;
+//valid keypad combo
 var comboSet = [
 	"294",
 	"232",
@@ -64,6 +65,7 @@ var checkLoop = setInterval(function() {
 		clearInterval(checkLoop);
 	}
 
+	//if the input string matches the current combo set
 	if(inputString === comboSet[setIndex]) {
 		//clear the input to let the user know they enter the set correctly
 		clearInput();
@@ -79,6 +81,7 @@ function input(number) {
 	//add data to global input string
 	inputString += number;
 
+	//log to the browser console
 	console.log('inputed:' + number);
 	console.log('total input:' + inputString);
 
